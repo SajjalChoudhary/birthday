@@ -1,0 +1,633 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#080808">
+
+    <title>Happy Birthday, My Sister ✨</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --gold: #d4af37;
+            --light-gold: #f9e7a5;
+            --black: #080808;
+            --white: #f8f4e9;
+            --muted: #c4bda9;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            min-height: 100vh;
+            background:
+                radial-gradient(ellipse at top, #30240e 0%, #11100c 35%, #080808 75%);
+            color: var(--white);
+            font-family: 'Poppins', sans-serif;
+            overflow-x: hidden;
+        }
+
+        /* Golden sparkling background */
+
+        #stars {
+            position: fixed;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .page {
+            position: relative;
+            z-index: 1;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 25px 8%;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+        }
+
+        .logo {
+            color: var(--gold);
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 25px;
+            letter-spacing: 3px;
+        }
+
+        .nav-label {
+            color: var(--muted);
+            font-size: 11px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+
+        main {
+            width: 100%;
+            max-width: 1050px;
+            margin: auto;
+            padding: 65px 20px 75px;
+            text-align: center;
+        }
+
+        .eyebrow {
+            color: var(--gold);
+            font-size: 11px;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+            margin-bottom: 25px;
+            animation: fadeUp 1s both;
+        }
+
+        .crown {
+            font-size: 44px;
+            display: inline-block;
+            margin-bottom: 18px;
+            filter: drop-shadow(0 0 15px rgba(212, 175, 55, 0.5));
+            animation: float 3s ease-in-out infinite;
+        }
+
+        h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 500;
+            font-size: clamp(44px, 8vw, 90px);
+            line-height: 1.05;
+            color: var(--light-gold);
+            text-shadow: 0 0 30px rgba(212, 175, 55, 0.17);
+            animation: fadeUp 1.2s both;
+        }
+
+        h1 span {
+            display: block;
+            font-style: italic;
+            color: var(--gold);
+        }
+
+        .divider {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            margin: 28px auto;
+            color: var(--gold);
+        }
+
+        .divider::before,
+        .divider::after {
+            content: "";
+            width: 65px;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--gold));
+        }
+
+        .divider::after {
+            transform: rotate(180deg);
+        }
+
+        .sister-name {
+            font-family: 'Cormorant Garamond', serif;
+            color: var(--white);
+            font-size: clamp(30px, 5vw, 44px);
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+        }
+
+        .intro {
+            max-width: 590px;
+            margin: 0 auto;
+            font-size: 14px;
+            font-weight: 300;
+            line-height: 2.1;
+            color: var(--muted);
+        }
+
+        .cake {
+            margin: 30px auto;
+            font-size: 75px;
+            display: inline-block;
+            filter: drop-shadow(0 0 22px rgba(212, 175, 55, 0.2));
+            animation: float 3.5s ease-in-out infinite;
+        }
+
+        .buttons {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 14px;
+            margin-top: 35px;
+        }
+
+        button {
+            font-family: 'Poppins', sans-serif;
+            font-size: 12px;
+            letter-spacing: 1px;
+            padding: 15px 25px;
+            cursor: pointer;
+            transition: 0.3s ease;
+        }
+
+        .primary {
+            color: #100e08;
+            background: linear-gradient(135deg, #f9e7a5, #d4af37, #b68b20);
+            border: 1px solid var(--light-gold);
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.15);
+        }
+
+        .secondary {
+            color: var(--light-gold);
+            background: transparent;
+            border: 1px solid rgba(212, 175, 55, 0.65);
+        }
+
+        button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 0 25px rgba(212, 175, 55, 0.3);
+        }
+
+        button:focus-visible {
+            outline: 2px solid white;
+            outline-offset: 4px;
+        }
+
+        /* Surprise message */
+
+        .surprise {
+            display: none;
+            max-width: 680px;
+            margin: 40px auto 0;
+            padding: 30px 25px;
+            border: 1px solid rgba(212, 175, 55, 0.55);
+            background: rgba(212, 175, 55, 0.045);
+            animation: fadeUp 0.8s both;
+        }
+
+        .surprise.show {
+            display: block;
+        }
+
+        .surprise h2 {
+            font-family: 'Cormorant Garamond', serif;
+            color: var(--gold);
+            font-size: 36px;
+            margin-bottom: 18px;
+        }
+
+        .surprise p {
+            color: var(--muted);
+            font-size: 14px;
+            line-height: 2.1;
+        }
+
+        .signature {
+            color: var(--light-gold);
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 25px;
+            font-style: italic;
+            margin-top: 22px;
+        }
+
+        .wishes {
+            max-width: 800px;
+            margin: 55px auto 0;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+        }
+
+        .wish-card {
+            padding: 25px 12px;
+            border: 1px solid rgba(212, 175, 55, 0.23);
+            background: rgba(255, 255, 255, 0.018);
+            transition: 0.3s;
+        }
+
+        .wish-card:hover {
+            border-color: var(--gold);
+            background: rgba(212, 175, 55, 0.06);
+            transform: translateY(-5px);
+        }
+
+        .wish-card .icon {
+            font-size: 27px;
+            margin-bottom: 13px;
+        }
+
+        .wish-card h3 {
+            font-family: 'Cormorant Garamond', serif;
+            color: var(--light-gold);
+            font-size: 23px;
+            margin-bottom: 8px;
+        }
+
+        .wish-card p {
+            color: var(--muted);
+            font-size: 11px;
+            line-height: 1.8;
+        }
+
+        footer {
+            margin-top: auto;
+            padding: 25px 15px;
+            border-top: 1px solid rgba(212, 175, 55, 0.17);
+            text-align: center;
+            color: #a69b7c;
+            font-size: 10px;
+            letter-spacing: 2px;
+        }
+
+        .confetti {
+            position: fixed;
+            top: -20px;
+            z-index: 10;
+            pointer-events: none;
+            animation: fall linear forwards;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-12px); }
+        }
+
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(22px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fall {
+            to {
+                transform: translateY(110vh) rotate(700deg);
+                opacity: 0;
+            }
+        }
+
+        @media (max-width: 600px) {
+            nav {
+                padding: 20px 5%;
+            }
+
+            .logo {
+                font-size: 20px;
+                letter-spacing: 2px;
+            }
+
+            .nav-label {
+                font-size: 9px;
+                letter-spacing: 1px;
+            }
+
+            main {
+                padding: 55px 18px;
+            }
+
+            .eyebrow {
+                font-size: 9px;
+                letter-spacing: 3px;
+            }
+
+            .intro {
+                font-size: 13px;
+            }
+
+            .buttons {
+                flex-direction: column;
+                align-items: stretch;
+                max-width: 300px;
+                margin: 30px auto 0;
+            }
+
+            .wishes {
+                grid-template-columns: 1fr;
+                max-width: 330px;
+                margin-top: 40px;
+            }
+
+            .wish-card {
+                padding: 20px;
+            }
+
+            .surprise {
+                padding: 25px 18px;
+            }
+
+            .surprise h2 {
+                font-size: 30px;
+            }
+
+            footer {
+                font-size: 9px;
+                line-height: 1.8;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                scroll-behavior: auto !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <canvas id="stars" aria-hidden="true"></canvas>
+
+    <div class="page">
+
+        <nav>
+            <div class="logo">GOLDEN MOMENTS</div>
+            <div class="nav-label">A Special Day ✦</div>
+        </nav>
+
+        <main>
+
+            <div class="eyebrow">✦ A Celebration Of You ✦</div>
+
+            <div class="crown">♛</div>
+
+            <h1>
+                Happy Birthday
+                <span>Dear Sister</span>
+            </h1>
+
+            <div class="divider">✧</div>
+
+            <!-- Apni sister ka naam yahan likho -->
+            <div class="sister-name">My Beautiful Sister</div>
+
+            <p class="intro">
+                To my wonderful sister, you are one of the most
+                precious gifts life has given me. May your special
+                day shine as beautifully as your heart, and may
+                every dream you hold come true. ✨
+            </p>
+
+            <div class="cake">🎂</div>
+
+            <p class="intro">
+                Today, the world celebrates you —
+                your beautiful soul, your kindness,
+                and the happiness you bring into our lives.
+            </p>
+
+            <div class="buttons">
+                <button class="primary" onclick="openSurprise()">
+                    OPEN YOUR SURPRISE ✨
+                </button>
+
+                <button class="secondary" onclick="celebrate()">
+                    CELEBRATE WITH ME ♛
+                </button>
+            </div>
+
+            <section class="surprise" id="surprise" aria-live="polite">
+                <h2>To My Forever Best Friend 💛</h2>
+
+                <p>
+                    Dear Sister,<br><br>
+
+                    No words can truly describe how special you are
+                    to me. You are not just my sister; you are a
+                    beautiful part of my life, my happiness, and
+                    one of my greatest blessings.<br><br>
+
+                    May Allah bless you with good health, endless
+                    happiness, success, peace, and a life filled
+                    with love. May every new chapter bring you
+                    closer to your dreams.<br><br>
+
+                    No matter how much we grow, you will always
+                    have a special place in my heart. I hope your
+                    birthday is as precious as you are. ❤️
+                </p>
+
+                <div class="signature">
+                    Forever your loving sibling ♡
+                </div>
+            </section>
+
+            <section class="wishes">
+
+                <div class="wish-card">
+                    <div class="icon">👑</div>
+                    <h3>Endless Success</h3>
+                    <p>
+                        May you always shine bright
+                        and achieve everything you dream of.
+                    </p>
+                </div>
+
+                <div class="wish-card">
+                    <div class="icon">💛</div>
+                    <h3>True Happiness</h3>
+                    <p>
+                        May your heart always be full
+                        of peace, love and beautiful moments.
+                    </p>
+                </div>
+
+                <div class="wish-card">
+                    <div class="icon">✨</div>
+                    <h3>Golden Memories</h3>
+                    <p>
+                        May your year be filled with
+                        laughter, surprises and blessings.
+                    </p>
+                </div>
+
+            </section>
+
+        </main>
+
+        <footer>
+            MADE WITH LOVE FOR MY SISTER &nbsp; ✦ &nbsp; FOREVER SPECIAL
+        </footer>
+
+    </div>
+
+    <script>
+        // Beautiful animated golden stars
+
+        const canvas = document.getElementById("stars");
+        const ctx = canvas.getContext("2d");
+
+        let stars = [];
+        let animationFrame;
+
+        function resizeCanvas() {
+            const ratio = Math.min(window.devicePixelRatio || 1, 2);
+
+            canvas.width = window.innerWidth * ratio;
+            canvas.height = window.innerHeight * ratio;
+
+            canvas.style.width = window.innerWidth + "px";
+            canvas.style.height = window.innerHeight + "px";
+
+            ctx.setTransform(ratio, 0, 0, ratio, 0, 0);
+
+            stars = Array.from(
+                { length: Math.min(
+                    100,
+                    Math.floor(window.innerWidth / 8)
+                ) },
+                () => ({
+                    x: Math.random() * window.innerWidth,
+                    y: Math.random() * window.innerHeight,
+                    radius: Math.random() * 1.5 + 0.3,
+                    alpha: Math.random(),
+                    speed: Math.random() * 0.012 + 0.003
+                })
+            );
+        }
+
+        function drawStars() {
+            ctx.clearRect(0, 0, window.innerWidth, window.innerHeight);
+
+            stars.forEach(star => {
+                star.alpha += star.speed;
+
+                if (star.alpha > 1 || star.alpha < 0.15) {
+                    star.speed *= -1;
+                }
+
+                ctx.beginPath();
+                ctx.arc(
+                    star.x,
+                    star.y,
+                    star.radius,
+                    0,
+                    Math.PI * 2
+                );
+
+                ctx.fillStyle =
+                    `rgba(234, 197, 93, ${star.alpha})`;
+
+                ctx.shadowBlur = 8;
+                ctx.shadowColor = "#d4af37";
+                ctx.fill();
+            });
+
+            ctx.shadowBlur = 0;
+
+            animationFrame = requestAnimationFrame(drawStars);
+        }
+
+        resizeCanvas();
+        drawStars();
+
+        window.addEventListener("resize", resizeCanvas);
+
+        // Reveal the personal birthday message
+
+        function openSurprise() {
+            const surprise = document.getElementById("surprise");
+
+            surprise.classList.add("show");
+            surprise.scrollIntoView({
+                behavior: "smooth",
+                block: "center"
+            });
+
+            celebrate();
+        }
+
+        // Golden birthday confetti
+
+        function celebrate() {
+            const symbols = ["✦", "✧", "✨", "💛", "🎉", "★"];
+
+            for (let i = 0; i < 65; i++) {
+                const particle = document.createElement("span");
+
+                particle.className = "confetti";
+                particle.textContent =
+                    symbols[Math.floor(Math.random() * symbols.length)];
+
+                particle.style.left = Math.random() * 100 + "vw";
+                particle.style.color =
+                    Math.random() > 0.5 ? "#f9e7a5" : "#d4af37";
+
+                particle.style.fontSize =
+                    (12 + Math.random() * 20) + "px";
+
+                const duration = 2 + Math.random() * 3;
+
+                particle.style.animationDuration = duration + "s";
+
+                document.body.appendChild(particle);
+
+                setTimeout(() => {
+                    particle.remove();
+                }, duration * 1000);
+            }
+        }
+    </script>
+
+</body>
+</html>
